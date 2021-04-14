@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+  function filter(e) {
+    value = +e.value
+    console.log(value)
+    state = [
+      ['flex', 'flex'],
+      ['flex', 'none'],
+      ['none', 'flex']
+    ]
+    document.querySelectorAll('.positive').forEach(dom => {
+      dom.style.display = state[value][0]
+    })
+    document.querySelectorAll('.negative').forEach(dom => {
+      dom.style.display = state[value][1]
+    })
+  }
+  </script>
+  <style>
+  body {
+    margin: 0;
+  }
+
+  #header {
+    width: 100%;
+    height: 60px;
+    background: #cfcfcf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #title {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  #filter {
+    margin: 10px;
+  }
+
+  .sample {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  .sample:hover {
+    background-color: #efefef;
+  }
+
+  .sample .judge {
+    font-weight: bold;
+  }
+
+  .sample.positive .judge {
+    color: #07c160;
+  }
+
+  .sample.negative .judge {
+    color: #e72f28;
+  }
+
+  .sample>.img {
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  .sample .log {
+    margin-top: 10px;
+    line-height: 1.2;
+  }
+
+  .sample .log p {
+    margin: 0;
+  }
+
+  #summary {
+    display: flex;
+  }
+
+  #summary>div {
+    padding: 10px;
+    flex: 1;
+    flex-grow: 1;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="title">AOI Inspection Report</div>
+    <div id="filter">
+      <select id="sample_filter" onchange="filter(this)">
+        <option value="0" default>Show all samples</option>
+        <option value="1" default>Only positive samples</option>
+        <option value="2" default>Only negative samples</option>
+      </select>
+    </div>
+  </div>
+  <div id="samples">
+    <!--samples-->
+  </div>
+  <div id="summary">
+    <div id="time">
+      <h3>Time Usage</h3>
+      <!--time-->
+    </div>
+    <div id="result">
+      <h3>Results</h3>
+      <!--result-->
+    </div>
+  </div>
+</body>
+
+</html>
